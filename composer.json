@@ -1,0 +1,21 @@
+{
+    "name": "hisorange/bbcoder",
+    "description": "Adding the well developed Decoda repository to Laravel 4.",
+    "authors": [
+        {
+            "name": "hisorange",
+            "email": "hisoranger@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.0",
+        "illuminate/support": "4.0.*",
+        "mjohnson/decoda": "6.*"
+    },
+    "autoload": {
+        "psr-0": {
+            "hisorange\\bbcoder\\": "src/"
+        }
+    },
+    "minimum-stability": "dev"
+}
