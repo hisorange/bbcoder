@@ -1,5 +1,8 @@
 <?php
 return array(
+	// Loaded config's path.
+	'cpath'	=> __DIR__,
+	
 	// Detailed explanations @ http://milesj.me/code/php/decoda
 	'profile' => array(
 		'default'		=> array(
