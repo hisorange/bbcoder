@@ -66,19 +66,19 @@ class BBCoder extends Decoda
 	 *
 	 * @return array
 	 */
-	public function getProfileConfig($key = 'config')
+	public function getProfileConfig($key)
 	{
 		// If no profile setted load the config.php
 		if (empty($this->_profile)) {
-			return $this->_configs->get('bbcoder::'.$key);
+			return $this->_configs->get('bbcoder::profile.default.'.$key);
 		}
 
 		// Check if the profile overwrites the default config.
-		if ($this->_configs->has('bbcoder::profile/'.$this->_profile.'.'.$key)) {
-			return $this->_configs->get('bbcoder::profile/'.$this->_profile.'.'.$key);
+		if ($this->_configs->has('bbcoder::profile.'.$this->_profile.'.'.$key)) {
+			return $this->_configs->get('bbcoder::profile.'.$this->_profile.'.'.$key);
 		}
 
-		return $this->_configs->get('bbcoder::'.$key);
+		return $this->_configs->get('bbcoder::profile.default.'.$key);
 	}
 
 	/**
