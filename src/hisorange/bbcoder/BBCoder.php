@@ -102,15 +102,8 @@ class BBCoder extends Decoda
         $this->whitelist($this->getProfileConfig('whitelist'));
         $this->blacklist($this->getProfileConfig('blacklist'));
 
-        $configNamespaces = $this->_configs->getNamespaces();
-
-        // Add profile's path first the default acts as fallback.
-        if (isset($this->_profile)) {	
-       		$this->addPath($configNamespaces['bbcoder'].'/'.$this->_profile);
-        }
-
-        // Add default path.
-        $this->addPath($configNamespaces['bbcoder']);
+        // Add configs dir as path.
+        $this->addPath($this->_configs->get('bbcoder::cpath'));
 
         return $this;
 	}
