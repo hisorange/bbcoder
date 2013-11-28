@@ -70,11 +70,11 @@ In the config directory can find the censored.php, emoticons.php, messages.php t
 ```php
 
 // Use the forum profile for the converting.
-echo BBCoder::convert('[spolier]Do not show me, I am naked![/abbr]', 'forum');
+echo BBCoder::convert('[spoiler]Do not show me, I am naked![/spoiler]', 'forum');
 
 // To reset back to the original profile simply use the null.
 // But if the null is not passed the script will use the last used profiled 'forum' in this case.
-echo BBCoder::convert('[spolier]Do not show me, I am naked![/abbr]', null);
+echo BBCoder::convert('[spoiler]Do not show me, I am naked![/spoiler]', null);
 ```
 
 ###### Work with the Decoda\Decoda object.
@@ -103,6 +103,6 @@ Add the ServiceProvider to your app.php in the config directory
 )
 ```
 
-Run composer update ;) The package will automaticaly registers the BBCoder alias to your application.
+The package will automaticaly registers the BBCoder alias to your application.
 
 For further informations about the BB Code parser configurations check out the [milesj/decoda](https://github.com/milesj/decoda) repo <3
