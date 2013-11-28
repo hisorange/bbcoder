@@ -16,31 +16,42 @@ echo BBCoder::convert('In the forum [quote]quote[/quote] tags are allowed.', 'fo
 
 ###### Creating a profile:
 ```php
-// config/packages/hisorange/bbcoder/profile/comments
+// config/packages/hisorange/bbcoder/config
 <?php
 return array(
-    // Under the 'comments' profile only the <u> <i> <b> html tags will be allowed.
-    'whitelist' => array('u', 'i', 'b'),
-    
-    // You can overwrite which filters being loaded.
-    'filters'	=> array(
-		'Decoda\Filter\DefaultFilter',
-		'Decoda\Filter\TextFilter',
-    ),
+	'profiles' => array(
+		'default' => array(
+			// ...
+		),
+
+		// Comments profile.
+		'comments'	=> array(
+		    // Under the 'comments' profile only the <u> <i> <b> html tags will be allowed.
+		    'whitelist' => array('u', 'i', 'b'),
+		    
+		    // You can overwrite which filters being loaded.
+		    'filters'	=> array(
+				'Decoda\Filter\DefaultFilter',
+				'Decoda\Filter\TextFilter',
+		    ),
+		),
+	),
 );
 ```
 
+The profile configurations inherits the default configuration's values.
 When you create a new profile config be cautious becaues the configurations do not merge recursive.
 This means when you create a profile e.g.: pageedit
 
 ###### Wrong way:
 ```php
-    // This will overwride the default config's 'parser' value but will remove the other keys.
    'parser' => array(
         'open' => '{',
 	    'close' => '}',
    ),
 ```
+
+This will overwride the default config's 'parser' value but will remove the other keys.
 
 ###### Right way:
 ```php
@@ -64,7 +75,7 @@ This is necessary in case where you would add the 'b' tag to the white list only
 The profiles inherits the default config.php values.
 
 ###### Extra configuration files
-In the config directory can find the censored.php, emoticons.php, messages.php those work exactly as the Decoda describe it, but I added a fallback loading so the FileLoader will look into the active profile's directory first and if cannot find the config will use the default. At this way you can use different emotions for different purposes.
+In the config directory can find the censored.php, emoticons.php, messages.php those work exactly as the Decoda describe it.
 
 ###### Reset / use default configuration.
 ```php
@@ -102,7 +113,12 @@ Add the ServiceProvider to your app.php in the config directory
     'hisorange\bbcoder\Providers\BBCoderServiceProvider',
 )
 ```
-
 The package will automaticaly registers the BBCoder alias to your application.
+
+Don't forget to publish the package configurations.
+
+```
+php artisan config:publish hisorange/bbcoder
+```
 
 For further informations about the BB Code parser configurations check out the [milesj/decoda](https://github.com/milesj/decoda) repo <3
