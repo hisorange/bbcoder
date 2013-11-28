@@ -11,7 +11,7 @@ The repository contains the basic functionality of the Decoda, but extends with 
 echo BBCoder::convert('This is an [b]example[/b]! But [i]this[/i] is just the beggining...');
 
 // Conver the string with a differnt profile initialized.
-echo BBCoder::convert('In the forum the [quote]quote[/quote] tags work but the [u]tables[/u] are removed.', 'forum');
+echo BBCoder::convert('In the forum [quote]quote[/quote] tags are allowed.', 'forum');
 ```
 
 ###### Creating a profile:
